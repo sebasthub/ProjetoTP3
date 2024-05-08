@@ -1,6 +1,6 @@
   # Stock2u
 
-![Template Stock2u](LINK IMAGEM GITHUB)
+![Template Stock2u](https://github.com/sebasthub/ProjetoTP3/tree/main/images/stock2u.png)
 
 ## Descrição do projeto
 Este projeto foi elaborado como componente essencial da disciplina de Tópicos em Programação III, oferecido na Universidade Estadual do Tocantins - UNITINS. Seu objetivo primordial consiste na concepção de um Sistema de Gerenciamento de Estoque para um restaurante, intitulado Stock2u.
@@ -18,7 +18,7 @@ O sistema está sendo desenvolvido em C# com o framework .NET; O banco de dados 
 ## 👨‍💻 Autores
 Danilo da Silva Moreira Pires e Sebastião Nogueira
 
-|<img src="imagens/danilo.png" width=115><br><sub>Danilo da Silva</sub> | <img src="imagens/sebastiao.png" width=115><br><sub>Sebastião Nogueira</sub> |
+|<img src="images/danilo.png" width=115><br><sub>Danilo da Silva</sub> | <img src="images/sebastiao.png" width=115><br><sub>Sebastião Nogueira</sub> |
 | :---: | :---: |
 
 
