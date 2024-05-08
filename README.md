@@ -1,6 +1,6 @@
   # Stock2u
 
-![Template Stock2u](https://github.com/sebasthub/ProjetoTP3/tree/main/images/stock2u.png)
+![Template Stock2u]([https://github.com/sebasthub/ProjetoTP3/tree/main/images/stock2u.png])
 
 ## Descrição do projeto
 Este projeto foi elaborado como componente essencial da disciplina de Tópicos em Programação III, oferecido na Universidade Estadual do Tocantins - UNITINS. Seu objetivo primordial consiste na concepção de um Sistema de Gerenciamento de Estoque para um restaurante, intitulado Stock2u.
