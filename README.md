@@ -1,2 +1,2 @@
 # ProjetoTP3
-Criação de um sistema de gerenciamento de estoque para um restaurante
+Criação de um Sistema de Gerenciamento de Estoque para um restaurante (disciplina de Tópicos em programação 3 da Universidade Estadual do Tocantins (UNITINS))
