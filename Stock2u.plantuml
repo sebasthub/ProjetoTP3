@@ -1,0 +1,60 @@
+@startuml Stock2u   
+
+class EstoqueRestaurante{
+ - id: int           
+ - nome: String      
+ - produtos: Produto[]
+ - quantidade: int 
+ - administrador: Administrador 
+ + adicionarProduto(nome: string, descricao: string, quantidade: int): Livro
+ + removerProduto(produto: Produto): void
+ + listarProdutos(): Produto[]
+ + buscarProdutoPorNome(nome: string): Produto[]
+ + quantificarProduto(): Produto[]
+ }
+
+class Produto{
+ - id: int           
+ - nome: String      
+ - descricao: String 
+ - quantidade: int 
+ - disponivel: boolean 
+ - localAmazenamento: String
+ }
+
+class Cliente {
+    - id: int
+    - nome: string
+    - produtosPedidos: Produto[]
+    + solicitarProduto(produto: Produto): void
+    + cancelarPedido(produto: Produto): void
+}
+
+class Administrador {
+    - nome: string
+    - cargo: string
+    + adicionarProduto(nome: string, descricao: string, quantidade: int): Livro
+    + removerProduto(produto: Produto): void
+    + listarProdutos(): Produto[]
+    + buscarProdutoPorNome(nome: string): Produto[]
+    + quantificarProduto(): Produto[]
+}
+
+class Funcionario {
+    - nome: string
+    - cargo: string
+    + adicionarProduto(nome: string, descricao: string, quantidade: int): Livro
+    + removerProduto(produto: Produto): void
+    + listarProdutos(): Produto[]
+    + buscarProdutoPorNome(nome: string): Produto[]
+    + quantificarProduto(): Produto[]
+}
+
+EstoqueRestaurante "1" -- "0..*" Produto
+EstoqueRestaurante "1" -- "0..*" Cliente
+EstoqueRestaurante "1" -- "1" Administrador
+EstoqueRestaurante "1" -- "0..*" Funcionario
+Produto "0..*" -- "0..*" Cliente
+Funcionario "1" -- "0..*" Cliente
+
+@enduml
