@@ -1,0 +1,135 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sebas\\source\\repos\\Stock2u\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\models\\estoquerestaurante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\models\\estoquerestaurante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\dto\\produtopost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\dto\\produtopost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\dto\\estoquerestaurantepost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\dto\\estoquerestaurantepost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|c:\\users\\sebas\\source\\repos\\stock2u\\stock2u\\models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A73263C6-861C-4D69-8121-5F61B29E2F70}|Stock2u\\Stock2u.csproj|solutionrelative:stock2u\\models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Program.cs",
+              "RelativeDocumentMoniker": "Stock2u\\Program.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Program.cs",
+              "RelativeToolTip": "Stock2u\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T11:51:49.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EstoqueRestaurante.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Models\\EstoqueRestaurante.cs",
+              "RelativeDocumentMoniker": "Stock2u\\Models\\EstoqueRestaurante.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Models\\EstoqueRestaurante.cs",
+              "RelativeToolTip": "Stock2u\\Models\\EstoqueRestaurante.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T04:34:32.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EstoqueRestaurantePost.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\DTO\\EstoqueRestaurantePost.cs",
+              "RelativeDocumentMoniker": "Stock2u\\DTO\\EstoqueRestaurantePost.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\DTO\\EstoqueRestaurantePost.cs",
+              "RelativeToolTip": "Stock2u\\DTO\\EstoqueRestaurantePost.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T04:34:26.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProdutoPost.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\DTO\\ProdutoPost.cs",
+              "RelativeDocumentMoniker": "Stock2u\\DTO\\ProdutoPost.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\DTO\\ProdutoPost.cs",
+              "RelativeToolTip": "Stock2u\\DTO\\ProdutoPost.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T04:03:32.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProdutosController.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Controllers\\ProdutosController.cs",
+              "RelativeDocumentMoniker": "Stock2u\\Controllers\\ProdutosController.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Controllers\\ProdutosController.cs",
+              "RelativeToolTip": "Stock2u\\Controllers\\ProdutosController.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAkwGcAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T03:28:20.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthenticateController.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Controllers\\AuthenticateController.cs",
+              "RelativeDocumentMoniker": "Stock2u\\Controllers\\AuthenticateController.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Controllers\\AuthenticateController.cs",
+              "RelativeToolTip": "Stock2u\\Controllers\\AuthenticateController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAADEAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T03:14:48.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Produto.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Models\\Produto.cs",
+              "RelativeDocumentMoniker": "Stock2u\\Models\\Produto.cs",
+              "ToolTip": "C:\\Users\\sebas\\source\\repos\\Stock2u\\Stock2u\\Models\\Produto.cs",
+              "RelativeToolTip": "Stock2u\\Models\\Produto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T02:08:17.378Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
