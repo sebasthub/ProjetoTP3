@@ -12,6 +12,7 @@ namespace Stock2u.Data
 
         public DbSet<EstoqueRestaurante> EstoqueRestaurantes { get; set; } = null!;
         public DbSet<Produto> Produtos { get; set; } = null!;
+        public DbSet<Retirada> Retiradas { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,11 @@ namespace Stock2u.Data
                 .WithOne(e => e.EstoqueRestaurante)
                 .HasForeignKey(e => e.IDEstoqueRestaurante)
                 .HasPrincipalKey(e => e.ID);
+
+            modelBuilder.Entity<Retirada>()
+                .HasOne(e => e.Produto)
+                .WithMany()
+                .HasForeignKey(e => e.ID);
 
             base.OnModelCreating(modelBuilder);
 
