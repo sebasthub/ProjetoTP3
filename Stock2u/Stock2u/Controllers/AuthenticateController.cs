@@ -3,8 +3,10 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Stock2u.Auth;
+using Stock2u.Models;
 
 namespace Stock2u.Controllers
 {
@@ -27,39 +29,63 @@ namespace Stock2u.Controllers
 
     }
 
-    [HttpPost]
-    [Route("register")]
-    public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserModel model)
-    {
-        var userExists = await _userManager.FindByEmailAsync(model.UserName);
-
-        if (userExists is not null)
-            return StatusCode(
-                StatusCodes.Status500InternalServerError,
-                new ResponseModel { Success = false, Message = "Usuário já existe!" }
-            );
-
-        IdentityUser user = new()
+        [HttpGet]
+        [Route("workers")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetProdutos()
         {
-            SecurityStamp = Guid.NewGuid().ToString(),
-            Email = model.Email,
-            UserName = model.UserName
-        };
+            if (_userManager.Users == null)
+            {
+                return NotFound();
+            }
 
-        var result = await _userManager.CreateAsync(user, model.Password);
+            var users = await _userManager.Users.ToListAsync();
+            var workers = new List<IdentityUser>();
 
-        if (!result.Succeeded)
-            return StatusCode(
-                StatusCodes.Status500InternalServerError,
-                new ResponseModel { Success = false, Message = "Erro ao criar usuário" }
-            );
+            foreach (var user in users)
+            {
+                if (await _userManager.IsInRoleAsync(user, "worker"))
+                {
+                    workers.Add(user);
+                }
+            }
 
-        var role = model.IsAdmin ? UserRoles.Admin : UserRoles.worker;
+            return workers;
+        }
 
-        await AddToRoleAsync(user, role);
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserModel model)
+        {
+            var userExists = await _userManager.FindByEmailAsync(model.UserName);
 
-        return Ok(new ResponseModel { Message = "Usuário criado com sucesso!" });
-    }
+            if (userExists is not null)
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    new ResponseModel { Success = false, Message = "Usuário já existe!" }
+                );
+
+            IdentityUser user = new()
+            {
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Email = model.Email,
+                UserName = model.UserName
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    new ResponseModel { Success = false, Message = "Erro ao criar usuário" }
+                );
+
+            var role = model.IsAdmin ? UserRoles.Admin : UserRoles.worker;
+
+            await AddToRoleAsync(user, role);
+
+            return Ok(new ResponseModel { Message = "Usuário criado com sucesso!" });
+        }
 
         [HttpPost]
         [Route("register-client")]
