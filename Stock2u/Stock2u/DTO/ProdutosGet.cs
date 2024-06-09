@@ -11,6 +11,5 @@ namespace Stock2u.DTO
         public bool Avaliable { get; set; }
         public string StoragePlace { get; set; }
 
-        public EstoqueRestaurante EstoqueRestaurante { get; set; } = null!;
     }
 }

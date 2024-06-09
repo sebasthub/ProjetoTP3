@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +41,7 @@ namespace Stock2u.Controllers
         // GET: api/EstoqueRestaurantes/5
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<EstoqueRestaurante>> GetEstoqueRestaurante(int id)
+        public async Task<ActionResult<EstoqueRestauranteGet>> GetEstoqueRestaurante(int id)
         {
           if (_context.EstoqueRestaurantes == null)
           {
@@ -56,7 +56,9 @@ namespace Stock2u.Controllers
 
             _context.Entry(estoqueRestaurante).Collection(x => x.Produtos).Load();
 
-            return estoqueRestaurante;
+            var estoqueRestauranteResp = _mapper.Map<EstoqueRestauranteGet>(estoqueRestaurante);
+
+            return estoqueRestauranteResp;
         }
 
         // PUT: api/EstoqueRestaurantes/5
