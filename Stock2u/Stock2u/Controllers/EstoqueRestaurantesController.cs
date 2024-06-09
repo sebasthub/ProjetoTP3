@@ -28,7 +28,7 @@ namespace Stock2u.Controllers
 
         // GET: api/EstoqueRestaurantes
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<EstoqueRestaurante>>> GetEstoqueRestaurantes()
         {
           if (_context.EstoqueRestaurantes == null)
@@ -40,7 +40,7 @@ namespace Stock2u.Controllers
 
         // GET: api/EstoqueRestaurantes/5
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<EstoqueRestauranteGet>> GetEstoqueRestaurante(int id)
         {
           if (_context.EstoqueRestaurantes == null)
@@ -64,7 +64,7 @@ namespace Stock2u.Controllers
         // PUT: api/EstoqueRestaurantes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutEstoqueRestaurante(int id, EstoqueRestaurante estoqueRestaurante)
         {
             if (id != estoqueRestaurante.ID)
@@ -96,7 +96,7 @@ namespace Stock2u.Controllers
         // POST: api/EstoqueRestaurantes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<EstoqueRestaurante>> PostEstoqueRestaurante(EstoqueRestaurantePost estoqueRestauranteDTO)
         {
           if (_context.EstoqueRestaurantes == null)
@@ -113,7 +113,7 @@ namespace Stock2u.Controllers
 
         // DELETE: api/EstoqueRestaurantes/5
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteEstoqueRestaurante(int id)
         {
             if (_context.EstoqueRestaurantes == null)

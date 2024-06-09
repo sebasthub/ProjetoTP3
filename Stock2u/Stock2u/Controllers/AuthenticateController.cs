@@ -1,5 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -60,7 +61,42 @@ namespace Stock2u.Controllers
         return Ok(new ResponseModel { Message = "Usuário criado com sucesso!" });
     }
 
-    [HttpPost]
+        [HttpPost]
+        [Route("register-client")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateClientAsync([FromBody] CreateUserModel model)
+        {
+            var userExists = await _userManager.FindByEmailAsync(model.UserName);
+
+            if (userExists is not null)
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    new ResponseModel { Success = false, Message = "Usuário já existe!" }
+                );
+
+            IdentityUser user = new()
+            {
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Email = model.Email,
+                UserName = model.UserName
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    new ResponseModel { Success = false, Message = "Erro ao criar usuário" }
+                );
+
+            var role = UserRoles.client;
+
+            await AddToRoleAsync(user, role);
+
+            return Ok(new ResponseModel { Message = "Usuário criado com sucesso!" });
+        }
+
+        [HttpPost]
     [Route("login")]
     public async Task<IActionResult> LoginAsync([FromBody] LoginModel model)
     {

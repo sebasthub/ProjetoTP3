@@ -28,7 +28,7 @@ namespace Stock2u.Controllers
 
         // GET: api/Produtos
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin,worker,client")]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
           if (_context.Produtos == null)
@@ -40,7 +40,7 @@ namespace Stock2u.Controllers
 
         // GET: api/Produtos/5
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin,worker")]
         public async Task<ActionResult<Produto>> GetProduto(int id)
         {
           if (_context.Produtos == null)
@@ -60,7 +60,7 @@ namespace Stock2u.Controllers
         // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin,worker")]
         public async Task<IActionResult> PutProduto(int id, Produto produto)
         {
             if (id != produto.ID)
@@ -92,7 +92,7 @@ namespace Stock2u.Controllers
         // POST: api/Produtos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,worker")]
         public async Task<ActionResult<Produto>> PostProduto(ProdutoPost produtoDTO)
         {
           if (_context.Produtos == null)
@@ -108,7 +108,7 @@ namespace Stock2u.Controllers
 
         // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin,worker")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
             if (_context.Produtos == null)
