@@ -12,6 +12,8 @@ namespace Stock2u.Mappings
             CreateMap<Produto, ProdutosGet>().ReverseMap();
             CreateMap<EstoqueRestaurante, EstoqueRestaurantePost>().ReverseMap();
             CreateMap<EstoqueRestaurante, EstoqueRestauranteGet>().ReverseMap();
+            CreateMap<Retirada, RetiradaPost>().ReverseMap();
+            CreateMap<Retirada, RetiradaGet>().ReverseMap();
         }
     }
 }

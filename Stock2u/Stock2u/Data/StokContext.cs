@@ -23,11 +23,15 @@ namespace Stock2u.Data
                 .WithOne(e => e.EstoqueRestaurante)
                 .HasForeignKey(e => e.IDEstoqueRestaurante)
                 .HasPrincipalKey(e => e.ID);
+            
+            modelBuilder.Entity<Retirada>().HasKey(e => e.ID);
 
             modelBuilder.Entity<Retirada>()
-                .HasOne(e => e.Produto)
+                .HasOne<Produto>(e => e.Produto)
                 .WithMany()
-                .HasForeignKey(e => e.ID);
+                .HasForeignKey(e => e.IdProduto);
+
+            
 
             base.OnModelCreating(modelBuilder);
 

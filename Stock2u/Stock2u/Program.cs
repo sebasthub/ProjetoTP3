@@ -17,7 +17,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<StokContext>(opt =>
-    opt.UseSqlServer("Data Source=DESKTOP-0PVID37\\SQLEXPRESS;Initial Catalog=stok;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"));
+    opt.UseSqlServer("Data Source=DESKTOP-0PVID37\\SQLEXPRESS;Initial Catalog=stok2u;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<StokContext>()
     .AddDefaultTokenProviders();
@@ -72,6 +72,22 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddAutoMapper(typeof(EntitiesToDTOMappingProfile));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<StokContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // Log de erro ou tratamento apropriado
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocorreu um erro ao aplicar as migrations ao banco de dados.");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

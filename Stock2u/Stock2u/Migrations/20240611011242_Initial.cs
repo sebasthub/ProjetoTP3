@@ -54,8 +54,7 @@ namespace Stock2u.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,6 +191,25 @@ namespace Stock2u.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Retiradas",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    IdProduto = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Retiradas", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Retiradas_Produtos_IdProduto",
+                        column: x => x.IdProduto,
+                        principalTable: "Produtos",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -235,6 +253,11 @@ namespace Stock2u.Migrations
                 name: "IX_Produtos_IDEstoqueRestaurante",
                 table: "Produtos",
                 column: "IDEstoqueRestaurante");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Retiradas_IdProduto",
+                table: "Retiradas",
+                column: "IdProduto");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -255,13 +278,16 @@ namespace Stock2u.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Produtos");
+                name: "Retiradas");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Produtos");
 
             migrationBuilder.DropTable(
                 name: "EstoqueRestaurantes");
