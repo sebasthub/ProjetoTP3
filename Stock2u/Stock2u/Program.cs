@@ -17,7 +17,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<StokContext>(opt =>
-    opt.UseSqlServer("Data Source=DESKTOP-0PVID37\\SQLEXPRESS;Initial Catalog=stok2u;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"));
+    opt.UseSqlServer("Data Source=sqlserver,1433;Initial Catalog=stok2u;User ID=SA;Password=SqlServer2019!;Trust Server Certificate=True"));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<StokContext>()
     .AddDefaultTokenProviders();

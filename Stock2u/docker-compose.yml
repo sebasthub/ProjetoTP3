@@ -1,0 +1,15 @@
+﻿services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "SqlServer2019!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+
+  stock2u:
+    image: stock2u
+    build:
+      context: .
+      dockerfile: Stock2u/Dockerfile
+    depends_on:
+      - sqlserver
