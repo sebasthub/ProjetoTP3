@@ -9,7 +9,7 @@
   stock2u:
     image: stock2u
     build:
-      context: .
+      context: Stock2u/.
       dockerfile: Stock2u/Dockerfile
     depends_on:
       - sqlserver
