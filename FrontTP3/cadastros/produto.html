@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .form h1 {
+            color: #343a40;
+        }
+        .form p {
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+        .form form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .various {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .form select {
+            appearance: auto;
+            -webkit-appearance: auto;
+            -moz-appearance: auto;
+        }
+        .form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container" class="bg-dark"></div>
+    <div class="content form">
+        <h1>Cadastro de Produto</h1>
+        <form id="productForm">
+            <label for="name">Nome:</label>
+            <input class="various" type="text" id="name" name="name" required>
+            
+            <label for="description">Descrição:</label>
+            <input class="various" type="text" id="description" name="description" required>
+            
+            <label for="quantity">Quantidade:</label>
+            <input class="various" type="number" id="quantity" name="quantity" required>   
+            
+            <label for="storagePlace">Local de Armazenamento:</label>
+            <input class="various" type="text" id="storagePlace" name="storagePlace" required>
+            
+            <label for="avaliable">Disponível:</label>
+            <select class="various" id="avaliable" name="avaliable" required>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+
+            <label for="idEstoqueRestaurante">ID Estoque Restaurante:</label>
+            <select class="various" id="idEstoqueRestaurante" name="idEstoqueRestaurante" required>
+                <!-- Options serão populadas dinamicamente -->
+            </select>
+            
+            <button class="various" type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script src="/static/js/login.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script>
+        async function loadEstoqueOptions() {
+            const token = localStorage.getItem('token');
+
+            try {
+                const response = await fetch('https://localhost:7284/api/EstoqueRestaurantes', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar estoques');
+                }
+
+                const estoques = await response.json();
+                const select = document.getElementById('idEstoqueRestaurante');
+                
+                estoques.forEach(estoque => {
+                    const option = document.createElement('option');
+                    option.value = estoque.id;
+                    option.textContent = estoque.name;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Erro:', error);
+            }
+        }
+
+        async function cadastrarProduto(event) {
+            event.preventDefault();
+            const token = localStorage.getItem('token');
+
+            const productData = {
+                name: document.getElementById('name').value,
+                description: document.getElementById('description').value,
+                quantity: document.getElementById('quantity').value,
+                avaliable: document.getElementById('avaliable').value === 'true',
+                storagePlace: document.getElementById('storagePlace').value,
+                idEstoqueRestaurante: document.getElementById('idEstoqueRestaurante').value
+            };
+
+            try {
+                const response = await fetch('https://localhost:7284/api/Produtos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(productData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao cadastrar produto');
+                }
+
+                window.location.href = '/produto.html';
+                document.getElementById('productForm').reset();
+            } catch (error) {
+                console.error('Erro:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadEstoqueOptions();
+            document.getElementById('productForm').addEventListener('submit', cadastrarProduto);
+        });
+    </script>
+</body>
+</html>

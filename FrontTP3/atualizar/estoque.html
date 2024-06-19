@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Nome do Restaurante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .form h1 {
+            color: #343a40;
+        }
+        .form p {
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+        .form form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .various {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .form select {
+            appearance: auto;
+            -webkit-appearance: auto;
+            -moz-appearance: auto;
+        }
+        .form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container" class="bg-dark"></div>
+    <div class="content form">
+        <h1>Atualização de Restaurante</h1>
+        <form id="estoqueForm" method="post">
+            <label for="name">Nome:</label>
+            <input class="various" type="text" id="name" name="name" required>
+            
+            <button class="various" type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script src="/static/js/login.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script>
+        document.getElementById('estoqueForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                console.error('Token não encontrado');
+                return;
+            }
+            
+            const name = document.getElementById('name').value;
+            const urlParams = new URLSearchParams(window.location.search);
+            const estoqueId = urlParams.get('id'); // Obtém o ID do estoque a partir dos parâmetros da URL
+            try {
+                const response = await fetch(`https://localhost:7284/api/EstoqueRestaurantes/${estoqueId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ name })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao atualizar nome do estoque restaurante');
+                }
+
+                window.location.href = '/estoque.html';
+                document.getElementById('updateForm').reset();
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao atualizar nome do estoque restaurante');
+            }
+        });
+    </script>
+</body>
+</html>

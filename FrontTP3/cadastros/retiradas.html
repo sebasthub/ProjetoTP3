@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Retirada de Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .form h1 {
+            color: #343a40;
+        }
+        .form p {
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+        .form form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .various {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .form select {
+            appearance: auto;
+            -webkit-appearance: auto;
+            -moz-appearance: auto;
+        }
+        .form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container" class="bg-dark"></div>
+    <div class="content form">
+        <h1>Formulário de Retirada de Produto</h1>
+    <form id="withdrawForm">
+        <label for="quantity">Quantidade:</label>
+        <input class="various" type="number" id="quantity" name="quantity" min="1" required>
+        <label for="productId">Produto:</label>
+        <select class="various" id="productId" name="productId" required>
+            <!-- Options will be populated dynamically -->
+        </select>
+        <button class="various" type="submit">Retirar Produto</button>
+    </form>
+    </div>
+
+    <script src="/static/js/login.js"></script>
+    <script src="/static/js/navbar.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const token = localStorage.getItem('token');
+            try {
+                const response = await fetch('https://localhost:7284/api/Produtos', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar lista de produtos');
+                }
+
+                const products = await response.json();
+                const selectProduct = document.getElementById('productId');
+
+                products.forEach(product => {
+                    const option = document.createElement('option');
+                    option.value = product.id;
+                    option.textContent = `${product.name} - ${product.quantity} disponíveis`;
+                    selectProduct.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao carregar lista de produtos');
+            }
+        });
+
+        document.getElementById('withdrawForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const token = localStorage.getItem('token');
+
+            const idProduto = document.getElementById('productId').value;
+            const quantity = document.getElementById('quantity').value;
+            console.log(idProduto);
+            try {
+                const response = await fetch('https://localhost:7284/api/Retirada', {
+                    method: 'POST', // Utilize POST ou PUT dependendo da sua API
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ idProduto, quantity })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao fazer retirada de produto');
+                }
+
+                window.location.href = '/retiradas.html';
+                document.getElementById('withdrawForm').reset();
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao fazer retirada de produto');
+            }
+        });
+    </script>
+</body>
+</html>
