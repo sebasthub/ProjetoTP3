@@ -61,13 +61,10 @@ namespace Stock2u.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin,worker")]
-        public async Task<IActionResult> PutProduto(int id, Produto produto)
+        public async Task<IActionResult> PutProduto(int id, ProdutoPost produtoDTO)
         {
-            if (id != produto.ID)
-            {
-                return BadRequest();
-            }
-
+            var produto = _mapper.Map<Produto>(produtoDTO);
+            produto.ID = id;
             _context.Entry(produto).State = EntityState.Modified;
 
             try
