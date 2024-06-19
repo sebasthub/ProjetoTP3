@@ -13,7 +13,7 @@ O sistema está sendo desenvolvido em C# com o framework .NET; O banco de dados 
 - `C#`
 - `.NET framework`
 - `SQL Server`
-- `Next.js`
+- `Html, Css e JavaScript`
 
 ## 👥 Autores
 Danilo da Silva Moreira Pires e Sebastião Nogueira
