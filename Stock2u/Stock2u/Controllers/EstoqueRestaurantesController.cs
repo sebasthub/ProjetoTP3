@@ -28,7 +28,7 @@ namespace Stock2u.Controllers
 
         // GET: api/EstoqueRestaurantes
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,worker")]
         public async Task<ActionResult<IEnumerable<EstoqueRestaurante>>> GetEstoqueRestaurantes()
         {
           if (_context.EstoqueRestaurantes == null)

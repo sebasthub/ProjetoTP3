@@ -32,7 +32,7 @@ namespace Stock2u.Controllers
         [HttpGet]
         [Route("workers")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetProdutos()
+        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetWorkers()
         {
             if (_userManager.Users == null)
             {
@@ -51,6 +51,48 @@ namespace Stock2u.Controllers
             }
 
             return workers;
+        }
+        
+        [HttpGet]
+        [Route("clients")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetClientes()
+        {
+            if (_userManager.Users == null)
+            {
+                return NotFound();
+            }
+
+            var users = await _userManager.Users.ToListAsync();
+            var clients = new List<IdentityUser>();
+
+            foreach (var user in users)
+            {
+                if (await _userManager.IsInRoleAsync(user, "client"))
+                {
+                    clients.Add(user);
+                }
+            }
+
+            return clients;
+        }
+        
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,worker")]
+        public async Task<ActionResult<IdentityUser>> GetUser(string id)
+        {
+            if (_userManager.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
         }
 
         [HttpPost]
@@ -142,7 +184,7 @@ namespace Stock2u.Controllers
             foreach (var userRole in userRoles)
                 authClaims.Add(new(ClaimTypes.Role, userRole));
 
-            return Ok(new ResponseModel { Data = GetToken(authClaims) });
+            return Ok(new ResponseModel { Data = GetToken(authClaims), Message = userRoles[0]});
         }
 
         return Unauthorized();
