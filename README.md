@@ -8,7 +8,7 @@ Este projeto foi elaborado como componente essencial da disciplina de Tópicos e
 O sistema está sendo desenvolvido em C# com o framework .NET; O banco de dados utilizado será o SQL Server.
 --> Link do projeto github: https://github.com/sebasthub/ProjetoTP3
 
-## 💻 Técnicas e tecnologias utilizadas
+## 💻 Linguagens, Frameworks e Tecnologias utilizadas
 
 - `C#`
 - `.NET framework`
